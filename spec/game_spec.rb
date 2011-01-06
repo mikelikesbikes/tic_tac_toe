@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Game do
   subject { Game.new(player1, player2) }
-  let(:player1) { Player.new }
-  let(:player2) { Player.new }
+  let(:player1) { mock("player") }
+  let(:player2) { mock("player") }
 
   describe "initializing" do
     it "should have a board" do
@@ -27,7 +27,7 @@ describe Game do
 
   describe "run_turn" do
     before(:each) do
-      player1.stub!(:move).and_return(5)
+      player1.should_receive(:move).and_return(5)
       subject.run_turn
     end
 

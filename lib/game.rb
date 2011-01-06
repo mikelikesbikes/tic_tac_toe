@@ -8,11 +8,14 @@ class Game
   end
 
   def run_turn
-    # get current player's next move
-    move = players[(turn - 1) % players.length].move
-    # record the move in the board
+    board.record_move(next_move, "X")
 
     self.turn += 1
+  end
+
+  private
+  def next_move
+    players[(turn - 1) % players.length].move
   end
 
 end
